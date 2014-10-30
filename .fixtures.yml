@@ -1,6 +1,6 @@
 fixtures:
   repositories:
-    'inifile':  'git://github.com/puppetlabs/puppetlabs-inifile'
+    'inifile':  'git://github.com/puppetlabs/puppetlabs-inifile.git'
     'keystone': 'git://github.com/stackforge/puppet-keystone.git'
     'mysql':
       repo: 'git://github.com/puppetlabs/puppetlabs-mysql.git'
@@ -11,4 +11,4 @@ fixtures:
       ref: '2.5.0'
     'stdlib': 'git://github.com/puppetlabs/puppetlabs-stdlib.git'
   symlinks:
-    'trove': "#{source_dir}"
+    'tuskar': "#{source_dir}"
