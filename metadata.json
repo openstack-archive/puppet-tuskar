@@ -14,7 +14,7 @@
   "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
-      "operatingsystemrelease": ["7"]
+      "operatingsystemrelease": ["8"]
     },
     {
       "operatingsystem": "Fedora",
@@ -26,7 +26,7 @@
     },
     {
       "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": ["12.04","14.04"]
+      "operatingsystemrelease": ["14.04"]
     }
   ],
   "description": "Installs and configures OpenStack Tuskar (Management service).",
