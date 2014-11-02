@@ -15,7 +15,7 @@ puppet-tuskar
 Overview
 --------
 
-The tuskar module is a part of [Stackforge](https://github.com/stackforge), an effort by the Openstack infrastructure team to provide continuous integration testing and code review for Openstack and Openstack community projects not part of the core software. The module itself is used to flexibly configure and manage the database service for Openstack.
+The tuskar module is a part of [Stackforge](https://github.com/stackforge), an effort by the Openstack infrastructure team to provide continuous integration testing and code review for Openstack and Openstack community projects not part of the core software. The module itself is used to flexibly configure and manage the management service for Openstack.
 
 Module Description
 ------------------
@@ -47,7 +47,7 @@ Developer documentation for the entire puppet-openstack project.
 Contributors
 ------------
 
-* https://github.com/enovance/puppet-tuskar/graphs/contributors
+* https://github.com/stackforge/puppet-tuskar/graphs/contributors
 
 Release Notes
 -------------
