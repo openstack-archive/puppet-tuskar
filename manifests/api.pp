@@ -125,7 +125,7 @@ class tuskar::api(
       fail("Invalid db connection ${::tuskar::database_connection}")
     }
     tuskar_config {
-      'database/sql_connection':   value => $::tuskar::database_connection;
+      'database/sql_connection':   value => $::tuskar::database_connection, secret => true;
       'database/sql_idle_timeout': value => $::tuskar::database_idle_timeoutl;
     }
   }
@@ -136,7 +136,10 @@ class tuskar::api(
     'DEFAULT/debug':                        value => $debug;
     'DEFAULT/tuskar_api_bind_ip':           value => $bind_host;
     'DEFAULT/tuskar_api_port':              value => $bind_port;
-    'keystone_authtoken/identity_uri'       value => $identity_uri;
+    'keystone_authtoken/identity_uri':      value => $identity_uri;
+    'keystone_authtoken/admin_user':        value => $keystone_user;
+    'keystone_authtoken/admin_password':    value => $keystone_password, secret => true;
+    'keystone_authtoken/admin_tenant_name': value => $keystone_tenant;
   }
 
   # Logging
