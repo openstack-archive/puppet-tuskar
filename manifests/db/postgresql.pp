@@ -1,36 +1,47 @@
 # == Class: tuskar::db::postgresql
 #
-# Manage the tuskar postgresql database
+# Class that configures postgresql for tuskar
+# Requires the Puppetlabs postgresql module.
 #
 # === Parameters:
 #
 # [*password*]
-#   (required) Password that will be used for the tuskar db user.
+#   (Required) Password to connect to the database.
 #
 # [*dbname*]
-#   (optionnal) Name of tuskar database.
-#   Defaults to tuskar
+#   (Optional) Name of the database.
+#   Defaults to 'tuskar'.
 #
 # [*user*]
-#   (optionnal) Name of tuskar user.
-#   Defaults to tuskar
+#   (Optional) User to connect to the database.
+#   Defaults to 'tuskar'.
+#
+#  [*encoding*]
+#    (Optional) The charset to use for the database.
+#    Default to undef.
+#
+#  [*privileges*]
+#    (Optional) Privileges given to the database user.
+#    Default to 'ALL'
 #
 class tuskar::db::postgresql(
   $password,
-  $dbname    = 'tuskar',
-  $user      = 'tuskar'
+  $dbname     = 'tuskar',
+  $user       = 'tuskar',
+  $encoding   = undef,
+  $privileges = 'ALL',
 ) {
 
-  require postgresql::python
-
   Class['tuskar::db::postgresql'] -> Service<| title == 'tuskar' |>
-  Postgresql::Db[$dbname] ~> Exec<| title == 'tuskar-dbsync' |>
-  Package['python-psycopg2'] -> Exec<| title == 'tuskar-dbsync' |>
 
-
-  postgresql::db { $dbname:
-    user     => $user,
-    password => $password,
+  ::openstacklib::db::postgresql { 'tuskar':
+    password_hash => postgresql_password($user, $password),
+    dbname        => $dbname,
+    user          => $user,
+    encoding      => $encoding,
+    privileges    => $privileges,
   }
+
+  ::Openstacklib::Db::Postgresql['tuskar'] ~> Exec<| title == 'tuskar-dbsync' |>
 
 }
