@@ -22,7 +22,6 @@ class tuskar::db::sync {
     path        => '/usr/bin',
     user        => 'tuskar',
     refreshonly => true,
-    subscribe   => [Package['tuskar'], Keystone_config['DEFAULT/sql_connection']],
-    require     => User['tuskar'],
+    subscribe   => [Package['tuskar-api'], Tuskar_config['database/sql_connection']],
   }
 }
