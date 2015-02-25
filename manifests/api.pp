@@ -106,8 +106,8 @@ class tuskar::api(
   $ensure_package               = 'present',
 ) inherits tuskar {
 
-  require keystone::python
-  include tuskar::params
+  require ::keystone::python
+  include ::tuskar::params
 
   Tuskar_config<||> ~> Exec['post-tuskar_config']
   Tuskar_config<||> ~> Service['tuskar-api']

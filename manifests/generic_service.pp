@@ -35,8 +35,8 @@ define tuskar::generic_service(
   $ensure_package = 'present'
 ) {
 
-  include tuskar::params
-  include tuskar::db::sync
+  include ::tuskar::params
+  include ::tuskar::db::sync
 
   $tuskar_title = "tuskar-${name}"
   Exec['post-tuskar_config'] ~> Service<| title == $tuskar_title |>

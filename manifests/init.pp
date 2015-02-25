@@ -33,7 +33,7 @@ class tuskar(
   $database_connection          = 'sqlite:////var/lib/tuskar/tuskar.sqlite',
   $database_idle_timeout        = 3600,
 ) {
-  include tuskar::params
+  include ::tuskar::params
 
   exec { 'post-tuskar_config':
     command     => '/bin/echo "Tuskar config has changed"',

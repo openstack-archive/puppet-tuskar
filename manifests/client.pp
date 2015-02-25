@@ -30,7 +30,7 @@ class tuskar::client (
   $package_ensure = present
 ) {
 
-  include tuskar::params
+  include ::tuskar::params
 
   package { 'python-tuskarclient':
     ensure => $package_ensure,
