@@ -15,24 +15,24 @@ describe 'tuskar::keystone::auth' do
         :tenant   => 'foobar' }
     end
 
-    it { should contain_keystone_user('tuskar').with(
+    it { is_expected.to contain_keystone_user('tuskar').with(
       :ensure   => 'present',
       :password => 'tuskar_password',
       :tenant   => 'foobar'
     ) }
 
-    it { should contain_keystone_user_role('tuskar@foobar').with(
+    it { is_expected.to contain_keystone_user_role('tuskar@foobar').with(
       :ensure  => 'present',
       :roles   => 'admin'
     )}
 
-    it { should contain_keystone_service('tuskar').with(
+    it { is_expected.to contain_keystone_service('tuskar').with(
       :ensure      => 'present',
       :type        => 'management',
       :description => 'Tuskar Management Service'
     ) }
 
-    it { should contain_keystone_endpoint('RegionOne/tuskar').with(
+    it { is_expected.to contain_keystone_endpoint('RegionOne/tuskar').with(
       :ensure       => 'present',
       :public_url   => "http://127.0.0.1:8585",
       :admin_url    => "http://127.0.0.1:8585",
@@ -62,7 +62,7 @@ describe 'tuskar::keystone::auth' do
         :admin_address    => '10.10.10.12' }
     end
 
-    it { should contain_keystone_endpoint('RegionOne/tuskar').with(
+    it { is_expected.to contain_keystone_endpoint('RegionOne/tuskar').with(
       :ensure       => 'present',
       :public_url   => "https://10.10.10.10:80",
       :internal_url => "http://10.10.10.11:81",
@@ -76,9 +76,9 @@ describe 'tuskar::keystone::auth' do
         :auth_name => 'tuskary' }
     end
 
-    it { should contain_keystone_user('tuskary') }
-    it { should contain_keystone_user_role('tuskary@services') }
-    it { should contain_keystone_service('tuskary') }
-    it { should contain_keystone_endpoint('RegionOne/tuskary') }
+    it { is_expected.to contain_keystone_user('tuskary') }
+    it { is_expected.to contain_keystone_user_role('tuskary@services') }
+    it { is_expected.to contain_keystone_service('tuskary') }
+    it { is_expected.to contain_keystone_endpoint('RegionOne/tuskary') }
   end
 end

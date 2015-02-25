@@ -17,7 +17,7 @@ describe 'tuskar::db::postgresql' do
     let :params do
       req_params
     end
-    it { should contain_postgresql__db('tuskar').with(
+    it { is_expected.to contain_postgresql__db('tuskar').with(
       :user         => 'tuskar',
       :password     => 'pw'
      ) }

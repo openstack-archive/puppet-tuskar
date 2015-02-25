@@ -7,8 +7,8 @@ describe 'tuskar' do
 
   shared_examples_for 'tuskar' do
     it {
-      should contain_class('tuskar::params')
-      should contain_exec('post-tuskar_config')
+      is_expected.to contain_class('tuskar::params')
+      is_expected.to contain_exec('post-tuskar_config')
     }
   end
 

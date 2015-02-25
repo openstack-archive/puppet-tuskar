@@ -18,13 +18,13 @@ describe 'tuskar::api' do
     context 'with default parameters' do
 
       it 'installs tuskar-api package and service' do
-        should contain_service('tuskar-api').with(
+        is_expected.to contain_service('tuskar-api').with(
           :name      => platform_params[:api_service_name],
           :ensure    => 'running',
           :hasstatus => true,
           :enable    => true
         )
-        should contain_package('tuskar-api').with(
+        is_expected.to contain_package('tuskar-api').with(
           :name   => platform_params[:api_package_name],
           :ensure => 'present',
           :notify => 'Service[tuskar-api]'
@@ -32,15 +32,15 @@ describe 'tuskar::api' do
       end
 
       it 'configures tuskar-api with default parameters' do
-        should contain_tuskar_config('DEFAULT/verbose').with_value(false)
-        should contain_tuskar_config('DEFAULT/debug').with_value(false)
-        should contain_tuskar_config('DEFAULT/tuskar_api_bind_ip').with_value('0.0.0.0')
-        should contain_tuskar_config('DEFAULT/tuskar_api_port').with_value('8585')
-        should contain_tuskar_config('keystone_authtoken/identity_uri').with_value(params[:identity_uri])
-        should contain_tuskar_config('keystone_authtoken/admin_tenant_name').with_value(params[:keystone_tenant])
-        should contain_tuskar_config('keystone_authtoken/admin_user').with_value(params[:keystone_user])
-        should contain_tuskar_config('keystone_authtoken/admin_password').with_value(params[:keystone_password])
-        should contain_tuskar_config('keystone_authtoken/admin_password').with_value(params[:keystone_password]).with_secret(true)
+        is_expected.to contain_tuskar_config('DEFAULT/verbose').with_value(false)
+        is_expected.to contain_tuskar_config('DEFAULT/debug').with_value(false)
+        is_expected.to contain_tuskar_config('DEFAULT/tuskar_api_bind_ip').with_value('0.0.0.0')
+        is_expected.to contain_tuskar_config('DEFAULT/tuskar_api_port').with_value('8585')
+        is_expected.to contain_tuskar_config('keystone_authtoken/identity_uri').with_value(params[:identity_uri])
+        is_expected.to contain_tuskar_config('keystone_authtoken/admin_tenant_name').with_value(params[:keystone_tenant])
+        is_expected.to contain_tuskar_config('keystone_authtoken/admin_user').with_value(params[:keystone_user])
+        is_expected.to contain_tuskar_config('keystone_authtoken/admin_password').with_value(params[:keystone_password])
+        is_expected.to contain_tuskar_config('keystone_authtoken/admin_password').with_value(params[:keystone_password]).with_secret(true)
       end
 
       context 'when using MySQL' do
@@ -49,8 +49,8 @@ describe 'tuskar::api' do
              database_connection   => 'mysql://tuskar:pass@10.0.0.1/tuskar'}"
         end
         it 'configures tuskar-api with RabbitMQ' do
-          should contain_tuskar_config('database/sql_connection').with_value('mysql://tuskar:pass@10.0.0.1/tuskar')
-          should contain_tuskar_config('database/sql_connection').with_value('mysql://tuskar:pass@10.0.0.1/tuskar').with_secret(true)
+          is_expected.to contain_tuskar_config('database/sql_connection').with_value('mysql://tuskar:pass@10.0.0.1/tuskar')
+          is_expected.to contain_tuskar_config('database/sql_connection').with_value('mysql://tuskar:pass@10.0.0.1/tuskar').with_secret(true)
         end
       end
     end
