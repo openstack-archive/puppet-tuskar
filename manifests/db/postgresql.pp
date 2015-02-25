@@ -29,8 +29,8 @@ class tuskar::db::postgresql(
 
 
   postgresql::db { $dbname:
-    user      => $user,
-    password  => $password,
+    user     => $user,
+    password => $password,
   }
 
 }
