@@ -13,7 +13,7 @@ describe 'tuskar::client' do
 
     context 'with package_ensure parameter provided' do
       let :params do
-        { :package_ensure => false }
+        { :ensure_package => false }
       end
       it { should contain_package('python-tuskarclient').with_ensure('false') }
     end

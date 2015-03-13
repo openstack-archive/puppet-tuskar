@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2014 eNovance SAS <licensing@enovance.com>
+# Copyright (C) 2015 eNovance SAS <licensing@enovance.com>
 #
 # Author: Emilien Macchi <emilien.macchi@enovance.com>
 #
@@ -14,10 +14,10 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
-
-# tuskar::client
 #
-# Manages the tuskar client package on systems
+# tuskar::ui
+#
+# Install UI (and UI extras)
 #
 # === Parameters:
 #
@@ -25,16 +25,27 @@
 #   (optional) The state of the package
 #   Defaults to present
 #
+# [*extras*]
+#   (optional) Also install UI extras
+#   Defaults to false
 #
-class tuskar::client (
-  $ensure_package = present
+class tuskar::ui (
+  $ensure_package = 'present',
+  $extras         = false,
 ) {
 
-  include tuskar::params
+  include ::tuskar::params
 
-  package { 'python-tuskarclient':
+  package { 'tuskar-ui':
     ensure => $ensure_package,
-    name   => $::tuskar::params::client_package_name,
+    name   => $::tuskar::params::ui_package_name,
+  }
+
+  if $extras {
+    package { 'tuskar-ui-extras':
+      ensure => $ensure_package,
+      name   => $::tuskar::params::ui_extras_package_name,
+    }
   }
 
 }
