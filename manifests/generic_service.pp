@@ -32,7 +32,7 @@ define tuskar::generic_service(
   $service_name,
   $enabled        = false,
   $manage_service = true,
-  $ensure_package = 'present'
+  $package_ensure = 'present'
 ) {
 
   include tuskar::params
@@ -45,7 +45,7 @@ define tuskar::generic_service(
   if ($package_name) {
     if !defined(Package[$package_name]) {
       package { $tuskar_title:
-        ensure => $ensure_package,
+        ensure => $package_ensure,
         name   => $package_name,
         notify => Service[$tuskar_title],
       }
