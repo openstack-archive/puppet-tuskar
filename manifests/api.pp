@@ -25,7 +25,7 @@
 #   (optional) Whether to start/stop the service
 #   Defaults to true
 #
-# [*ensure_package*]
+# [*package_ensure*]
 #   (optional) Whether the tuskar api package will be installed
 #   Defaults to 'present'
 #
@@ -103,7 +103,7 @@ class tuskar::api(
   $log_facility                 = 'LOG_USER',
   $purge_config                 = false,
   $manage_service               = true,
-  $ensure_package               = 'present',
+  $package_ensure               = 'present',
 ) inherits tuskar {
 
   require keystone::python
@@ -182,7 +182,7 @@ class tuskar::api(
   tuskar::generic_service { 'api':
     enabled        => $enabled,
     manage_service => $manage_service,
-    ensure_package => $ensure_package,
+    package_ensure => $package_ensure,
     package_name   => $::tuskar::params::api_package_name,
     service_name   => $::tuskar::params::api_service_name,
   }
