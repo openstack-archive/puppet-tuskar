@@ -1,0 +1,10 @@
+Verified+2: Jenkins
+Code-Review+2: Emilien Macchi <emilien@redhat.com>
+Code-Review+2: Mathieu Gagné <mgagne@iweb.com>
+Workflow+1: Mathieu Gagné <mgagne@iweb.com>
+Code-Review+1: Gael Chamoulaud <gchamoul@redhat.com>
+Submitted-by: Jenkins
+Submitted-at: Mon, 16 Mar 2015 14:19:35 +0000
+Reviewed-on: https://review.openstack.org/158978
+Project: stackforge/puppet-tuskar
+Branch: refs/heads/master
