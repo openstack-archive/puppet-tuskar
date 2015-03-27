@@ -35,6 +35,19 @@ class tuskar(
 ) {
   include ::tuskar::params
 
+  group { 'tuskar':
+    ensure  => present,
+    system  => true,
+    require => Package['tuskar-api'],
+  }
+
+  user { 'tuskar':
+    ensure  => 'present',
+    gid     => 'tuskar',
+    system  => true,
+    require => Package['tuskar-api'],
+  }
+
   exec { 'post-tuskar_config':
     command     => '/bin/echo "Tuskar config has changed"',
     refreshonly => true,

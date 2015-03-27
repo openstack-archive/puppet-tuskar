@@ -22,6 +22,7 @@ class tuskar::db::sync {
     path        => '/usr/bin',
     user        => 'tuskar',
     refreshonly => true,
-    subscribe   => [Package['tuskar-api'], Tuskar_config['database/sql_connection']],
+    subscribe   => [Package['tuskar-api'], Tuskar_config['database/connection']],
+    require     => User['tuskar'],
   }
 }
