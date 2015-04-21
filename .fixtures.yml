@@ -1,5 +1,8 @@
 fixtures:
   repositories:
+    'concat':
+      repo: 'git://github.com/puppetlabs/puppetlabs-concat.git'
+      ref: '1.2.1'
     'inifile':  'git://github.com/puppetlabs/puppetlabs-inifile.git'
     'concat': 'git://github.com/puppetlabs/puppetlabs-concat.git'
     'keystone': 'git://github.com/stackforge/puppet-keystone.git'
