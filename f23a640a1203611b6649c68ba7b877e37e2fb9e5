@@ -1,0 +1,9 @@
+Verified+2: Jenkins
+Code-Review+2: Emilien Macchi <emilien@redhat.com>
+Code-Review+2: Matt Fischer <matt@mattfischer.com>
+Workflow+1: Matt Fischer <matt@mattfischer.com>
+Submitted-by: Jenkins
+Submitted-at: Wed, 22 Apr 2015 14:42:33 +0000
+Reviewed-on: https://review.openstack.org/176289
+Project: stackforge/puppet-tuskar
+Branch: refs/heads/master
