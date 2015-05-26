@@ -87,6 +87,10 @@
 #   (optional) Complete admin Identity API endpoint.
 #   Defaults to 'http://127.0.0.1:35357'.
 #
+# [*sync_db*]
+#   (Optional) Run db sync on the node.
+#   Defaults to true
+#
 class tuskar::api(
   $keystone_password,
   $verbose                      = false,
@@ -104,6 +108,7 @@ class tuskar::api(
   $purge_config                 = false,
   $manage_service               = true,
   $package_ensure               = 'present',
+  $sync_db                      = true,
 ) inherits tuskar {
 
   require ::keystone::python
@@ -185,5 +190,6 @@ class tuskar::api(
     package_ensure => $package_ensure,
     package_name   => $::tuskar::params::api_package_name,
     service_name   => $::tuskar::params::api_service_name,
+    sync_db        => $sync_db,
   }
 }

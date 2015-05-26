@@ -32,15 +32,19 @@ define tuskar::generic_service(
   $service_name,
   $enabled        = false,
   $manage_service = true,
-  $package_ensure = 'present'
+  $package_ensure = 'present',
+  $sync_db        = true,
 ) {
 
   include ::tuskar::params
-  include ::tuskar::db::sync
+
+  if $sync_db {
+    include ::tuskar::db::sync
+  }
 
   $tuskar_title = "tuskar-${name}"
   Exec['post-tuskar_config'] ~> Service<| title == $tuskar_title |>
-  Exec<| title == 'tuskar-dbsync' |> ~> Service<| title == $tuskar_title |>
+  Openstaclib::Db::Sync <| title == 'tuskar' |> ~> Service<| title == $tuskar_title |>
 
   if ($package_name) {
     if !defined(Package[$package_name]) {

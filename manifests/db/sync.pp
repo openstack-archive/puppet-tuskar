@@ -15,13 +15,49 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 #
-# Class to execute "tuskar-dbsync"
+# == class: tuskar::db::sync
 #
-class tuskar::db::sync {
-  exec { 'tuskar-dbsync':
-    path        => '/usr/bin',
-    user        => 'tuskar',
-    refreshonly => true,
-    subscribe   => [Package['tuskar-api'], Tuskar_config['database/sql_connection']],
+# DB sync tuskar class
+#
+# === parameters:
+#
+#  [*command*]
+#    (Optional) Command to run for database synchronization
+#    Defaults to 'tuskar-manage db_sync'
+#
+#  [*path*]
+#    (Optional) Default path for the db_sync command
+#    Defaults to /usr/bin.
+#
+#  [*user*]
+#    (Optional) User to run the db_sync command with
+#    Defaults to 'tuskar'.
+#
+#  [*refreshonly*]
+#    (Optional) Run this command on refresh only
+#    Defaults to true.
+#
+#  [*logoutput*]
+#    (Optional) When to log the output
+#    Defaults to on_failure.
+#
+class tuskar::db::sync (
+  $command     = 'tuskar-dbsync',
+  $path        = '/usr/bin',
+  $user        = 'tuskar',
+  $refreshonly = true,
+  $logoutput   = 'on_failure',
+) {
+
+  Package['tuskar-api'] ~> Openstacklib::Db::Sync['tuskar']
+  Tuskar_config['database/connection'] ~> Openstacklib::Db::Sync['tuskar']
+
+  openstacklib::db::sync { 'tuskar':
+    command     => $command,
+    path        => $path,
+    user        => $user,
+    refreshonly => $refreshonly,
+    logoutput   => $logoutput,
   }
+
 }

@@ -42,6 +42,6 @@ class tuskar::db::postgresql(
     privileges    => $privileges,
   }
 
-  ::Openstacklib::Db::Postgresql['tuskar'] ~> Exec<| title == 'tuskar-dbsync' |>
+  ::Openstacklib::Db::Postgresql['tuskar'] ~> Openstacklib::Db::Sync <| title == 'tuskar' |>
 
 }

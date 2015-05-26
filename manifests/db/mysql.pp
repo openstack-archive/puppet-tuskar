@@ -79,5 +79,5 @@ class tuskar::db::mysql(
     allowed_hosts => $allowed_hosts,
   }
 
-  ::Openstacklib::Db::Mysql['tuskar'] ~> Exec<| title == 'tuskar-dbsync' |>
+  ::Openstacklib::Db::Mysql['tuskar'] ~> Openstacklib::Db::Sync <| title == 'tuskar' |>
 }
