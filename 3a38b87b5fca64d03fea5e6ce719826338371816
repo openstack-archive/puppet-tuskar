@@ -1,0 +1,10 @@
+Verified+2: Jenkins
+Code-Review+2: Sebastien Badia <sbadia@redhat.com>
+Code-Review+2: Matt Fischer <matt@mattfischer.com>
+Workflow+1: Matt Fischer <matt@mattfischer.com>
+Code-Review+1: Gael Chamoulaud <gchamoul@redhat.com>
+Submitted-by: Jenkins
+Submitted-at: Tue, 21 Jul 2015 16:02:32 +0000
+Reviewed-on: https://review.openstack.org/203521
+Project: openstack/puppet-tuskar
+Branch: refs/heads/master
