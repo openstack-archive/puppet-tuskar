@@ -12,6 +12,7 @@ describe 'tuskar::ui' do
         is_expected.to contain_package('tuskar-ui').with(
           :name   => platform_params[:ui_package_name],
           :ensure => 'present',
+          :tag    => ['openstack', 'tuskar-package'],
         )
         is_expected.to_not contain_package('tuskar-ui-extras')
       end
@@ -25,10 +26,12 @@ describe 'tuskar::ui' do
         is_expected.to contain_package('tuskar-ui').with(
           :name   => platform_params[:ui_package_name],
           :ensure => 'present',
+          :tag    => ['openstack', 'tuskar-package'],
         )
         is_expected.to contain_package('tuskar-ui-extras').with(
           :name   => platform_params[:ui_extras_package_name],
           :ensure => 'present',
+          :tag    => ['openstack', 'tuskar-package'],
         )
       end
     end
@@ -41,6 +44,7 @@ describe 'tuskar::ui' do
         is_expected.to contain_package('tuskar-ui').with(
           :name   => platform_params[:ui_package_name],
           :ensure => 'absent',
+          :tag    => ['openstack', 'tuskar-package'],
         )
       end
     end
