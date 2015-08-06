@@ -13,6 +13,17 @@ $LOAD_PATH.push(
     'inifile',
     'lib')
 )
+$LOAD_PATH.push(
+  File.join(
+    File.dirname(__FILE__),
+    '..',
+    '..',
+    '..',
+    'fixtures',
+    'modules',
+    'openstacklib',
+    'lib')
+)
 require 'spec_helper'
 provider_class = Puppet::Type.type(:tuskar_config).provider(:ini_setting)
 describe provider_class do
