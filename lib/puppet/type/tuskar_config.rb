@@ -39,4 +39,9 @@ Puppet::Type.newtype(:tuskar_config) do
 
     defaultto false
   end
+
+  autorequire(:package) do
+    'tuskar-api'
+  end
+
 end
