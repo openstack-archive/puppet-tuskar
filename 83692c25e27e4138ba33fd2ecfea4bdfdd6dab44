@@ -1,0 +1,9 @@
+Verified+2: Jenkins
+Code-Review+2: Emilien Macchi <emilien@redhat.com>
+Code-Review+2: Colleen Murphy <colleen@gazlene.net>
+Workflow+1: Colleen Murphy <colleen@gazlene.net>
+Submitted-by: Jenkins
+Submitted-at: Fri, 21 Aug 2015 21:25:25 +0000
+Reviewed-on: https://review.openstack.org/209883
+Project: openstack/puppet-tuskar
+Branch: refs/heads/master
