@@ -1,0 +1,12 @@
+Verified+2: Jenkins
+Code-Review+2: Emilien Macchi <emilien@redhat.com>
+Code-Review+1: Paul Belanger <pabelanger@redhat.com>
+Code-Review+2: Sebastien Badia <sbadia@redhat.com>
+Workflow+1: Sebastien Badia <sbadia@redhat.com>
+Code-Review+1: Victor Howard <victor.r.howard@gmail.com>
+Code-Review+1: Yanis Guenane <yguenane@redhat.com>
+Submitted-by: Jenkins
+Submitted-at: Fri, 11 Sep 2015 16:10:50 +0000
+Reviewed-on: https://review.openstack.org/189882
+Project: openstack/puppet-tuskar
+Branch: refs/heads/master
