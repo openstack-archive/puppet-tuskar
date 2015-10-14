@@ -40,6 +40,22 @@ describe 'tuskar::keystone::auth' do
     ) }
   end
 
+  describe 'with endpoint parameters' do
+    let :params do
+      { :password     => 'tuskar_password',
+        :public_url   => 'https://10.0.0.10:8585',
+        :admin_url    => 'https://10.0.0.11:8585',
+        :internal_url => 'https://10.0.0.11:8585' }
+    end
+
+    it { is_expected.to contain_keystone_endpoint('RegionOne/tuskar').with(
+      :ensure       => 'present',
+      :public_url   => 'https://10.0.0.10:8585',
+      :admin_url    => 'https://10.0.0.11:8585',
+      :internal_url => 'https://10.0.0.11:8585'
+    ) }
+  end
+
   describe 'when configuring tuskar-server' do
     let :pre_condition do
       "class { 'tuskar::server': auth_password => 'test' }"
@@ -81,4 +97,20 @@ describe 'tuskar::keystone::auth' do
     it { is_expected.to contain_keystone_service('tuskary') }
     it { is_expected.to contain_keystone_endpoint('RegionOne/tuskary') }
   end
+
+  describe 'when overriding various parameters' do
+    let :params do
+      { :password            => 'foo',
+        :service_name        => 'mytuskar',
+        :configure_user      => false,
+        :configure_user_role => false }
+    end
+
+    it { is_expected.to contain_keystone__resource__service_identity('tuskar').with(
+      :service_name        => 'mytuskar',
+      :configure_user      => false,
+      :configure_user_role => false,
+    ) }
+  end
+
 end
