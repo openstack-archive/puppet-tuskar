@@ -113,27 +113,11 @@ class tuskar::api(
 
   require ::keystone::python
   include ::tuskar::logging
+  include ::tuskar::db
   include ::tuskar::params
 
   Tuskar_config<||> ~> Exec['post-tuskar_config']
   Tuskar_config<||> ~> Service['tuskar-api']
-
-  if $::tuskar::database_connection {
-    if($::tuskar::database_connection =~ /mysql:\/\/\S+:\S+@\S+\/\S+/) {
-      require 'mysql::bindings'
-      require 'mysql::bindings::python'
-    } elsif($::tuskar::database_connection =~ /postgresql:\/\/\S+:\S+@\S+\/\S+/) {
-
-    } elsif($::tuskar::database_connection =~ /sqlite:\/\//) {
-
-    } else {
-      fail("Invalid db connection ${::tuskar::database_connection}")
-    }
-    tuskar_config {
-      'database/connection':       value => $::tuskar::database_connection, secret => true;
-      'database/sql_idle_timeout': value => $::tuskar::database_idle_timeoutl;
-    }
-  }
 
   # basic service config
   tuskar_config {
