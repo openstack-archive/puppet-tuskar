@@ -31,6 +31,17 @@ describe 'tuskar::db' do
 
     end
 
+    context 'with postgresql backend' do
+      let :params do
+        { :database_connection     => 'postgresql://tuskar:tuskar@localhost/tuskar', }
+      end
+
+      it 'install the proper backend package' do
+        is_expected.to contain_package('python-psycopg2').with(:ensure => 'present')
+      end
+
+    end
+
     context 'with incorrect database_connection string' do
       let :params do
         { :database_connection     => 'redis://tuskar:tuskar@localhost/tuskar', }
@@ -43,15 +54,35 @@ describe 'tuskar::db' do
 
   context 'on Debian platforms' do
     let :facts do
-      { :osfamily => 'Debian' }
+      { :osfamily => 'Debian',
+        :operatingsystem => 'Debian',
+        :operatingsystemrelease => 'jessie',
+      }
     end
 
     it_configures 'tuskar::db'
+
+    context 'with sqlite backend' do
+      let :params do
+        { :database_connection     => 'sqlite:///var/lib/tuskar/tuskar.sqlite', }
+      end
+
+      it 'install the proper backend package' do
+        is_expected.to contain_package('tuskar-backend-package').with(
+          :ensure => 'present',
+          :name   => 'python-pysqlite2',
+          :tag    => 'openstack'
+        )
+      end
+
+    end
   end
 
   context 'on Redhat platforms' do
     let :facts do
-      { :osfamily => 'RedHat' }
+      { :osfamily => 'RedHat',
+        :operatingsystemrelease => '7.1',
+      }
     end
 
     it_configures 'tuskar::db'

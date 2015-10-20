@@ -43,6 +43,8 @@ class tuskar::db (
   $database_max_overflow   = 20,
 ) {
 
+  include ::tuskar::params
+
   # NOTE(spredzy): In order to keep backward compatibility we rely on the pick function
   # to use tuskar::<myparam> if tuskar::db::<myparam> isn't specified.
   $database_connection_real = pick($::tuskar::database_connection, $database_connection)
@@ -64,7 +66,8 @@ class tuskar::db (
         require 'mysql::bindings::python'
       }
       /^postgresql:\/\//: {
-        $backend_package = $::tuskar::params::psycopg_package_name
+        $backend_package = false
+        require 'postgresql::lib::python'
       }
       /^sqlite:\/\//: {
         $backend_package = $::tuskar::params::sqlite_package_name

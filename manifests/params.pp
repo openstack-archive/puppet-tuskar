@@ -9,7 +9,6 @@ class tuskar::params {
       $api_service_name         = 'openstack-tuskar-api'
       $ui_package_name          = 'openstack-tuskar-ui'
       $ui_extras_package_name   = 'openstack-tuskar-ui-extras'
-      $psycopg_package_name     = 'python-psycopg2'
       $sqlite_package_name      = undef
     }
     'Debian': {
@@ -18,7 +17,6 @@ class tuskar::params {
       $api_service_name         = 'tuskar-api'
       $ui_package_name          = 'tuskar-ui'
       $ui_extras_package_name   = 'tuskar-ui-extras'
-      $psycopg_package_name     = 'python-psycopg2'
       $sqlite_package_name      = 'python-pysqlite2'
     }
     default: {
