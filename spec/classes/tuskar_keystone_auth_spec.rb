@@ -18,7 +18,6 @@ describe 'tuskar::keystone::auth' do
     it { is_expected.to contain_keystone_user('tuskar').with(
       :ensure   => 'present',
       :password => 'tuskar_password',
-      :tenant   => 'foobar'
     ) }
 
     it { is_expected.to contain_keystone_user_role('tuskar@foobar').with(
