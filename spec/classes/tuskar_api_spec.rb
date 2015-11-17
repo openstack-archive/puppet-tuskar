@@ -36,10 +36,8 @@ describe 'tuskar::api' do
       end
 
       it 'configures tuskar-api with default parameters' do
-        is_expected.to contain_tuskar_config('DEFAULT/verbose').with_value(false)
-        is_expected.to contain_tuskar_config('DEFAULT/debug').with_value(false)
-        is_expected.to contain_tuskar_config('DEFAULT/tuskar_api_bind_ip').with_value('0.0.0.0')
-        is_expected.to contain_tuskar_config('DEFAULT/tuskar_api_port').with_value('8585')
+        is_expected.to contain_tuskar_config('DEFAULT/tuskar_api_bind_ip').with_value('<SERVICE DEFAULT>')
+        is_expected.to contain_tuskar_config('DEFAULT/tuskar_api_port').with_value('<SERVICE DEFAULT>')
         is_expected.to contain_tuskar_config('keystone_authtoken/identity_uri').with_value(params[:identity_uri])
         is_expected.to contain_tuskar_config('keystone_authtoken/admin_tenant_name').with_value(params[:keystone_tenant])
         is_expected.to contain_tuskar_config('keystone_authtoken/admin_user').with_value(params[:keystone_user])
@@ -62,9 +60,9 @@ describe 'tuskar::api' do
 
   context 'on Debian platforms' do
     let :facts do
-      {
+      @default_facts.merge({
         :osfamily       => 'Debian'
-      }
+      })
     end
 
     let :platform_params do
@@ -77,9 +75,9 @@ describe 'tuskar::api' do
 
   context 'on RedHat platforms' do
     let :facts do
-      {
+      @default_facts.merge({
         :osfamily       => 'RedHat'
-      }
+      })
     end
 
     let :platform_params do
