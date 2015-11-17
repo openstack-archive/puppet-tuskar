@@ -42,11 +42,11 @@
 #
 # [*bind_host*]
 #   (optional) The address of the host to bind to.
-#   Default: 0.0.0.0
+#   Default: $::os_service_default
 #
 # [*bind_port*]
 #   (optional) The port the server should bind to.
-#   Default: 8585
+#   Default: $::os_service_default
 #
 # [*log_file*]
 #   (optional) The path of file used for logging
@@ -100,8 +100,8 @@ class tuskar::api(
   $log_dir                      = undef,
   $use_stderr                   = undef,
   $log_file                     = undef,
-  $bind_host                    = '0.0.0.0',
-  $bind_port                    = '8585',
+  $bind_host                    = $::os_service_default,
+  $bind_port                    = $::os_service_default,
   $keystone_tenant              = 'services',
   $keystone_user                = 'tuskar',
   $identity_uri                 = 'http://127.0.0.1:35357',
