@@ -10,6 +10,7 @@ class tuskar::params {
       $ui_package_name          = 'openstack-tuskar-ui'
       $ui_extras_package_name   = 'openstack-tuskar-ui-extras'
       $sqlite_package_name      = undef
+      $pymysql_package_name     = 'python2-PyMySQL'
     }
     'Debian': {
       $client_package_name      = 'python-tuskarclient'
@@ -18,6 +19,7 @@ class tuskar::params {
       $ui_package_name          = 'tuskar-ui'
       $ui_extras_package_name   = 'tuskar-ui-extras'
       $sqlite_package_name      = 'python-pysqlite2'
+      $pymysql_package_name     = 'python-pymysql'
     }
     default: {
       fail("Unsupported osfamily: ${::osfamily} operatingsystem")
