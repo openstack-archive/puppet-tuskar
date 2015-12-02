@@ -10,7 +10,7 @@ class tuskar::params {
       $ui_package_name          = 'openstack-tuskar-ui'
       $ui_extras_package_name   = 'openstack-tuskar-ui-extras'
       $sqlite_package_name      = undef
-      $pymysql_package_name     = 'python2-PyMySQL'
+      $pymysql_package_name     = undef
     }
     'Debian': {
       $client_package_name      = 'python-tuskarclient'
