@@ -28,8 +28,6 @@ describe 'tuskar::db' do
       it { is_expected.to contain_tuskar_config('database/min_pool_size').with_value('2') }
       it { is_expected.to contain_tuskar_config('database/max_retries').with_value('11') }
       it { is_expected.to contain_tuskar_config('database/retry_interval').with_value('11') }
-      it { is_expected.to contain_package('tuskar-backend-package').with({ :ensure => 'present', :name => platform_params[:pymysql_package_name] }) }
-
     end
 
     context 'with MySQL-python library as backend package' do
@@ -77,11 +75,21 @@ describe 'tuskar::db' do
       })
     end
 
-    let :platform_params do
-      { :pymysql_package_name => 'python-pymysql' }
-    end
-
     it_configures 'tuskar::db'
+
+    context 'using pymysql driver' do
+      let :params do
+        { :database_connection     => 'mysql+pymysql://tuskar:tuskar@localhost/tuskar', }
+      end
+
+      it 'install the proper backend package' do
+        is_expected.to contain_package('tuskar-backend-package').with(
+          :ensure => 'present',
+          :name   => 'python-pymysql',
+          :tag    => 'openstack'
+        )
+      end
+    end
 
     context 'with sqlite backend' do
       let :params do
@@ -106,11 +114,15 @@ describe 'tuskar::db' do
       })
     end
 
-    let :platform_params do
-      { :pymysql_package_name => 'python2-PyMySQL' }
-    end
-
     it_configures 'tuskar::db'
+
+    context 'using pymysql driver' do
+      let :params do
+        { :database_connection     => 'mysql+pymysql://tuskar:tuskar@localhost/tuskar', }
+      end
+
+      it { is_expected.not_to contain_package('tuskar-backend-package') }
+    end
   end
 
 end
