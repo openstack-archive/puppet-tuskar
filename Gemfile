@@ -14,6 +14,10 @@ group :development, :test do
   gem 'puppet-lint-numericvariable',          :require => 'false'
   gem 'json',                                 :require => 'false'
   gem 'webmock',                              :require => 'false'
+  # adding 'psych' explicitly
+  # https://github.com/bundler/bundler/issues/4149
+  # TODO: drop it in a future release of 'bundle'.
+  gem 'psych',                                :require => 'false'
 end
 
 group :system_tests do
