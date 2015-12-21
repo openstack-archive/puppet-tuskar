@@ -192,7 +192,7 @@ class tuskar::keystone::auth (
     Keystone_user_role["${auth_name}@${tenant}"] ~> Service <| name == 'tuskar-api' |>
   }
 
-  Keystone_endpoint["${region}/${auth_name}"]  ~> Service <| name == 'tuskar-api' |>
+  Keystone_endpoint["${region}/${auth_name}::${service_type}"]  ~> Service <| name == 'tuskar-api' |>
 
   keystone::resource::service_identity { $auth_name:
     configure_user      => $configure_user,
