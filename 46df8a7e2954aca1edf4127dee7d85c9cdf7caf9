@@ -1,0 +1,9 @@
+Code-Review+2: Sebastien Badia <sbadia@redhat.com>
+Code-Review+2: Dan Prince <dprince@redhat.com>
+Workflow+1: Dan Prince <dprince@redhat.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Tue, 22 Dec 2015 21:10:14 +0000
+Reviewed-on: https://review.openstack.org/260684
+Project: openstack/puppet-tuskar
+Branch: refs/heads/stable/liberty
